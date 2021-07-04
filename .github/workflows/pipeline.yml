@@ -54,3 +54,19 @@ jobs:
           creds: ${{ secrets.AZURE_CREDS }}
           resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
           cluster-name: ${{ secrets.AZURE_CLUSTER_NAME }}
+      
+      - name: Deploy Mongo
+        uses: Azure/k8s-deploy@v1
+        with:
+          manifests: |
+            k8s/data/deployment.yaml
+            k8s/data/service.yaml
+
+      - name: Deploy App
+        uses: Azure/k8s-deploy@v1
+        with:
+          manifests: |
+            k8s/app/deployment.yaml
+            k8s/app/service.yaml
+            
+        
