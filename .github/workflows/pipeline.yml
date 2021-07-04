@@ -50,5 +50,6 @@ jobs:
       - name: Azure Kubernetes set context
         uses: Azure/aks-set-context@v1.1
         with:
+          creds: ${{ secrets.AZURE_CREDS }}
           resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
           cluster-name: ${{ secrets.AZURE_CLUSTER_NAME }}
